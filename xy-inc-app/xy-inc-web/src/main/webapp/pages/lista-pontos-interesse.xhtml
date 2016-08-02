@@ -1,0 +1,133 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/WEB-INF/template/template.xhtml"
+    xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="head" />
+
+	<ui:define name="content">
+	
+		<h:form id="formTable">
+		
+			<p:growl id="mensagens" showDetail="false" sticky="false" />
+					
+			<p:panel id="panel-novo" >
+			
+				<p:commandButton 
+					id="novo" 
+					value="Novo" 
+					update=":formCadastrar:cadastro" 
+					oncomplete="PF('dlgCadastrar').show()" 
+					immediate="true"
+					style="margin: 1%"
+					actionListener="#{pontoInteresseView.reset}"
+					icon="ui-icon-plusthick">
+					<p:resetInput target=":formCadastrar:cadastro" />
+				</p:commandButton>
+			</p:panel>
+			
+			<p:panel id="panel-search" >
+			
+				<p:inputText 
+					id="filtro-coord-x" 
+					placeholder="Informe a Coordenada X" 
+					value="#{pontoInteresseView.helper.coordX}" 
+					required="true"
+					requiredMessage="A Coordenada X deve ser informada!"
+					validatorMessage="A Coordenada X não pode ser negativa!">
+					<f:validateLongRange minimum="0" />
+				</p:inputText>
+					
+				<p:inputText 
+					id="filtro-coord-y" 
+					placeholder="Informe a Coordenada Y" 
+					value="#{pontoInteresseView.helper.coordY}"
+					required="true"
+					requiredMessage="A Coordenada Y deve ser informada!"
+					validatorMessage="A Coordenada Y não pode ser negativa!">
+					<f:validateLongRange minimum="0" />
+				</p:inputText>
+					
+				<p:inputText 
+					id="filtro-dist-max" 
+					placeholder="Informe a distância máxima" 
+					required="true"
+					value="#{pontoInteresseView.helper.maxDist}" 
+					requiredMessage="A distância máxima deve ser informada!" />
+				
+				<p:commandButton 
+					id="filtro" 
+					value="Filtrar" 
+					icon="ui-icon-search" 
+					actionListener="#{pontoInteresseView.filtar}" 
+					update="table, mensagens"
+					partialSubmit="true"
+					process="panel-search" />
+			
+			</p:panel>
+
+			<p:dataTable
+			    id="table"
+	           	var="obj"
+	            value="#{pontoInteresseView.list}"
+	            paginator="true"
+	            resizableColumns="true"
+	            paginatorPosition="bottom" 
+	            rows="20"
+	            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	            emptyMessage="Não há dados para exibir."
+	            rowsPerPageTemplate="5, 10, 20, 50, 100"
+	            currentPageReportTemplate="(Exibindo {currentPage} de {totalPages} páginas)">
+					
+                <f:facet name="header">
+                    Pontos de Interesse
+                </f:facet>
+                
+                <p:column headerText="Nome" sortBy="#{obj.nome}">
+                    <h:outputText value="#{obj.nome}" />
+                </p:column>
+                
+                <p:column headerText="Coordenada X" sortBy="#{obj.coordenadaX}">
+                    <center><h:outputText value="#{obj.coordenadaX}" /></center>
+                </p:column>
+                
+                <p:column headerText="Coordenada Y" sortBy="#{obj.coordenadaY}">
+                    <center><h:outputText value="#{obj.coordenadaY}" /></center>
+                </p:column>
+                
+                <p:column headerText="Ações" width="10%">
+	                <center>
+		                <p:commandButton
+		                	id="alterar"
+		                	title="Alterar"
+		                    update=":formCadastrar:cadastro"
+		                    oncomplete="PF('dlgCadastrar').show()"
+		                    immediate="true"
+		                    icon="ui-icon-pencil">
+		                	<p:resetInput target=":formCadastrar:cadastro" />
+	                        <f:setPropertyActionListener target="#{pontoInteresseView.pontoInteresse}" value="#{obj}" />
+		                </p:commandButton>
+		                
+		                <p:commandButton
+		                	id="excluir"
+		                	title="Excluir"
+		                    update=":formExcluir"
+		                    oncomplete="PF('dlgExcluir').show()"
+		                    immediate="true"
+		                    icon="ui-icon-trash">
+	                        <f:setPropertyActionListener target="#{pontoInteresseView.pontoInteresse}" value="#{obj}" />
+		                </p:commandButton>
+		            </center>
+                </p:column>
+	                
+	    	</p:dataTable>
+		</h:form>
+
+		<ui:include src="cadastro-pontos-interesse.xhtml"/>
+		<ui:include src="exclusao-pontos-interesse.xhtml"/>
+		    	
+	</ui:define>
+
+</ui:composition>

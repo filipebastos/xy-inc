@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+			<meta name="viewport"
+				content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+			<meta name="apple-mobile-web-app-capable" content="yes" />
+		</f:facet>
+			
+		<ui:insert name="head" />
+	
+		<title>Xy Inc</title>
+		
+	</h:head>
+
+	<h:body>
+	
+	    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+	    <p:dialog id="modal-loading" header="Loading..." modal="true" widgetVar="statusDialog" draggable="false" resizable="false" closable="false">
+	        <h:graphicImage library="images" name="loader.gif" style="width: 80px"/>
+	    </p:dialog>
+		
+		<f:view contentType="text/html">
+			
+			<center><ui:insert name="content" /></center>
+		
+		</f:view>
+			    
+	</h:body>
+
+</ui:composition>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="formExcluir">
+		<p:confirmDialog
+	       id="Excluir"
+	       message="Deseja realmente excluir o ponto de interesse #{pontoInteresseView.pontoInteresse.nome}?"
+	       header="Excluir"
+	       severity="alert"
+	       showEffect="explode"
+	       hideEffect="explode"
+	       closeOnEscape="true"
+	       widgetVar="dlgExcluir">
+	
+	       <p:commandButton
+	       		id="btnSim"
+	            value="Sim"
+	            oncomplete="PF('dlgExcluir').hide()"
+	            actionListener="#{pontoInteresseView.excluir}"
+	            update=":formTable:table, :formTable:mensagens" />
+	       <p:commandButton
+	        	id="btnNao"
+	            value="Não"
+	            oncomplete="PF('dlgExcluir').hide()" />
+	
+		</p:confirmDialog>
+	</h:form>
+	
+</f:view>

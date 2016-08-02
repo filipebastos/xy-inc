@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="xy-inc-app-web">
+    <wb-module deploy-name="xy-inc-web">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="context-root" value="xy-inc-app-web"/>
-        <property name="java-output-path" value="/xy-inc-app-web/target/classes"/>
+        <dependent-module archiveName="xy-inc-app-core-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/xy-inc-app-core/xy-inc-app-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="xy-inc-web"/>
+        <property name="java-output-path" value="/xy-inc-web/target/classes"/>
     </wb-module>
 </project-modules>
