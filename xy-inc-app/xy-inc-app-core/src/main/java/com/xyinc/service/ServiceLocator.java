@@ -5,11 +5,9 @@ import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
-import com.xyinc.service.impl.PontoInteresseService;
-
 public final class ServiceLocator implements Serializable {
 
-	private static final long serialVersionUID = -8614575286387002945L;
+	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -25,6 +23,6 @@ public final class ServiceLocator implements Serializable {
 	}
 
 	public IPontoInteresseService getPontoInteresseService() {
-		return applicationContext.getBean("pontoInteresseService", PontoInteresseService.class);
+		return applicationContext.getBean("pontoInteresseService", IPontoInteresseService.class);
 	}
 }

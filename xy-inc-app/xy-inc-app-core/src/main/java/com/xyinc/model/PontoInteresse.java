@@ -2,25 +2,37 @@ package com.xyinc.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "t_ponto_interesse")
+@Table(name = "T_PONTO_INTERESSE")
+@NamedQueries({
+	@NamedQuery(name = PontoInteresseNamedQuery.LISTAR_TODOS, 
+		query = "select p from PontoInteresse p order by p.nome"),
+	@NamedQuery(name = PontoInteresseNamedQuery.LISTAR_POR_APROXIMACAO, 
+		query = "select p from PontoInteresse p where p.coordenadaX <= :coordenadaX and p.coordenadaY <= :coordenadaY order by p.nome"),
+})
 public class PontoInteresse implements Serializable {
 
-	private static final long serialVersionUID = -7910708412985930781L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
+	@Column
 	private String nome;
 
+	@Column(name = "COORDENADA_X")
 	private Integer coordenadaX;
 
+	@Column(name = "COORDENADA_Y")
 	private Integer coordenadaY;
 
 	public PontoInteresse() {

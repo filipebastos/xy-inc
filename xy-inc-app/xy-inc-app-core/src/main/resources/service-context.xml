@@ -4,9 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-autowire="byName">
 		
-	<import resource="classpath:common-context.xml" />
+	<import resource="classpath:common-context.xml" />	
 	
 	<bean class="com.xyinc.service.impl.PontoInteresseService" name="pontoInteresseService" />
-	<bean class="com.xyinc.service.ServiceLocator" factory-method="getInstance" />	
 
 </beans>

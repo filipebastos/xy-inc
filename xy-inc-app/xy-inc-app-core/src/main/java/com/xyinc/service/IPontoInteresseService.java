@@ -12,6 +12,8 @@ public interface IPontoInteresseService {
 
 	public void remover(PontoInteresse pontoInteresse);
 
+	public PontoInteresse buscarPeloId(Long id);
+
 	public Collection<PontoInteresse> listarTodos();
 
 	public Collection<PontoInteresse> listarPorProximidade(Integer coordenadaX, Integer coordenadaY, Integer limiteDistancia);

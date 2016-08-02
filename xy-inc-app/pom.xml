@@ -15,9 +15,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<hibernate.version>4.2.3.Final</hibernate.version>
 		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
-		<spring.version>4.3.2.RELEASE</spring.version>		
+		<spring.version>4.3.0.RELEASE</spring.version>
 		<servlet-api.version>3.1.0</servlet-api.version>
 		<hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
+		<junit.version>4.12</junit.version>
 	</properties>
 
 	<dependencyManagement>
@@ -87,6 +88,16 @@
 			    <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
 			</dependency>
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+	        </dependency>
 					
 			<!-- Dependências do Hibernate -->
 			<dependency>
@@ -113,6 +124,14 @@
 			    <artifactId>javax.servlet-api</artifactId>
 			    <version>${servlet-api.version}</version>
 			</dependency>
+			
+			<!-- Dependências JUnit testes unitários-->
+			<dependency>
+			    <groupId>junit</groupId>
+			    <artifactId>junit</artifactId>
+			    <version>${junit.version}</version>
+	    		<scope>test</scope>
+			</dependency>						
 
 		</dependencies>
 
@@ -120,6 +139,13 @@
 
 
 	<build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        
 		<pluginManagement>
 			<plugins>
 
