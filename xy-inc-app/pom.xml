@@ -8,7 +8,6 @@
 
 	<modules>
 		<module>xy-inc-app-core</module>
-		<module>xy-inc-app-web</module>
 		<module>xy-inc-web</module>
 	</modules>
 
@@ -75,16 +74,6 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-			</dependency>
-			<dependency>
-			    <groupId>org.springframework</groupId>
-			    <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
 			</dependency>
 			<dependency>
