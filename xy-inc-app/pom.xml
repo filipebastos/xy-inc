@@ -1,0 +1,151 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.xyinc</groupId>
+	<artifactId>xy-inc-app</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>xy-inc-app-core</module>
+		<module>xy-inc-app-web</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<hibernate.version>4.2.3.Final</hibernate.version>
+		<postgresql.version>9.1-901-1.jdbc4</postgresql.version>
+		<spring.version>4.3.2.RELEASE</spring.version>		
+		<servlet-api.version>3.1.0</servlet-api.version>
+		<hibernate.validator.version>5.2.4.Final</hibernate.validator.version>
+	</properties>
+
+	<dependencyManagement>
+
+		<dependencies>
+
+			<!-- Dependêcias dos módulos -->
+			<dependency>
+				<groupId>com.xyinc</groupId>
+				<artifactId>xy-inc-app-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.xyinc</groupId>
+				<artifactId>xy-inc-app-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Dependências do Spring -->
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-oap</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+			</dependency>
+					
+			<!-- Dependências do Hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!-- Dependências das bases de dados -->
+			<dependency>
+				<groupId>postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+			</dependency>
+			
+			<!-- Dependências Servlet API -->
+			<dependency>
+			    <groupId>javax.servlet</groupId>
+			    <artifactId>javax.servlet-api</artifactId>
+			    <version>${servlet-api.version}</version>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.5.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>
