@@ -3,8 +3,8 @@
 Solução
 
 Foi utilizado um projeto com dois módulos separados, possibilitando um reuso
- > O módulo core guarda a lógica de negócio e a configuração com a base de dados
- > O módulo web contém dados do controlador e páginas do sistema
+1) O módulo core guarda a lógica de negócio e a configuração com a base de dados
+2) O módulo web contém dados do controlador e páginas do sistema
  
 A base de dados escolhida foi o Postgresql, no projeto suas propriedades estão no arquivo hibernate.properties
 
@@ -16,4 +16,4 @@ Para facilitar o gerenciamento de dependências e geração de builds, utilizei 
 
 Fiz os deploys no servidor Tomcat
 
-Na parte de front-end foi utilizada JSF com Primefaces
+Na parte de front-end foi utilizado JSF com Primefaces
